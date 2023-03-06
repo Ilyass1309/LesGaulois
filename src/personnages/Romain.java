@@ -23,10 +23,15 @@ public class Romain {
 	public void recevoirCoup(int forceCoup) {
 		force -= forceCoup;
 		if (force > 0) {
-			parler
+			parler("Aïe");
 		} else {
-
+			parler("J'abandonne...");
 		}
-		
+	}
+	public static void main(String[] args) {
+		Romain harry = new Romain("Harry", 12);
+		harry.prendreParole();
+		harry.parler("Je suis Potter !");
+		harry.recevoirCoup(5);
 	}
 }
