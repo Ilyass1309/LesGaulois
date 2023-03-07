@@ -1,8 +1,12 @@
 package personnages;
 
+import personnages.Equipement;
+
 public class Romain {
 	private String nom;
 	private int force;
+	private Equipement[] equipements = new Equipement[2];
+	private int nbEquipement = 0;
 	
 	public Romain(String nom, int force) {
 		if (force < 0) {
@@ -45,5 +49,7 @@ public class Romain {
 		harry.prendreParole();
 		harry.parler("Je suis Potter !");
 		harry.recevoirCoup(5);
+		System.out.println(Equipement.CASQUE);
+		System.out.println(Equipement.BOUCLIER);
 	}
 }
