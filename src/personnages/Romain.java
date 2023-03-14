@@ -1,7 +1,5 @@
 package personnages;
 
-import personnages.Equipement;
-
 public class Romain {
 	private String nom;
 	private int force;
@@ -42,14 +40,47 @@ public class Romain {
 		} else {
 			parler("J'abandonne...");
 		}
-		
 	}
+	
+	public void sEquiper(Equipement equipement) {
+		switch (nbEquipement) {
+		case 2 : {
+			System.out.println("Le soldat " + nom + " est déjà bien protégé!");
+			break;
+		}
+		case 1:{
+			if (equipement == equipements[0]) {
+				System.out.println("Le soldat " + nom + " possède déjà " + equipement 
+						+ " !");
+
+			} else {
+				equipe(equipement);
+				System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement + ".");
+			}
+			break;
+		}
+		case 0:{
+			equipe(equipement);
+			System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement + ".");
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + nbEquipement);
+		}
+	}
+	private void equipe(Equipement equipement) {
+		equipements[nbEquipement] = equipement;
+		nbEquipement++;
+	}
+	
 	public static void main(String[] args) {
 		Romain harry = new Romain("Harry", 12);
 		harry.prendreParole();
 		harry.parler("Je suis Potter !");
 		harry.recevoirCoup(5);
-		System.out.println(Equipement.CASQUE);
-		System.out.println(Equipement.BOUCLIER);
+		harry.sEquiper(Equipement.CASQUE);
+		harry.sEquiper(Equipement.CASQUE);
+		harry.sEquiper(Equipement.BOUCLIER);
+		harry.sEquiper(Equipement.CASQUE);
 	}
 }
